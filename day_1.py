@@ -6,13 +6,13 @@ a = sum(dl)
 def freq_collision(dl_c):
     dl_c_len = len(dl_c)
     freq = 0
-    seen_freq = [freq]
+    seen_freq = set([freq])
 
     for i in count(0):
         freq += dl_c[i % dl_c_len]
         if freq in seen_freq:
             break
-        seen_freq.append(freq)
+        seen_freq.add(freq)
     return freq
 
 ex1 = [1, -1]
