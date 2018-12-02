@@ -1,5 +1,4 @@
 from aocd import data
-from difflib import SequenceMatcher
 
 dl = data.split()
 
