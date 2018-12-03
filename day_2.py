@@ -4,8 +4,8 @@ dl = data.split()
 
 
 def part_a(data):
-    exactly_two = sum([1 for row in data if any([row.count(u) == 2 for u in set(row)])])
-    exactly_three = sum([1 for row in data if any([row.count(u) == 3 for u in set(row)])])
+    exactly_two = sum([any([row.count(u) == 2 for u in set(row)]) for row in data])
+    exactly_three = sum([any([row.count(u) == 3 for u in set(row)])for row in data])
     return exactly_two * exactly_three
 
 def part_b(data):
