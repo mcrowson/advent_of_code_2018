@@ -1,5 +1,4 @@
 from aocd import data
-from collections import defaultdict
 import re
 import numpy as np
 
