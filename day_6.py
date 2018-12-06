@@ -7,7 +7,7 @@ def manhattan(pairs, grid):
     return res
 
 def part_a(d):
-    pairs = [l.split(', ') for l in d]
+    pairs = [(x, y) for x, y in [l.split(', ') for l in d]]
     p_ar = np.array(pairs).astype(np.integer)  # 2D array of points
     li_x, li_y = p_ar[:,0].min()-1, p_ar[:,1].min()-1 # Low Infinity X/Y
     hi_x, hi_y = p_ar[:,0].max()+1, p_ar[:,1].max()+1  # High Infinity X/Y
@@ -15,16 +15,9 @@ def part_a(d):
     i = [] 
     # Identify the closest point for each space on the grid
     for cell in grid:
-      closest = None
-      distance = 9999999
-      for p in pairs:
-        d = sum(abs(int(a)-int(b)) for a,b in zip(cell, p))
-        if d < distance:
-          distance = d
-          closest = p
-        elif d == distance:
-          closest = ['0', '0'] # Duplicate match 
-      i.append(tuple(closest))
+      distances = [sum(abs(int(a)-int(b)) for a,b in zip(cell, p)) for p in pairs]
+      closest = min(distances)
+      i.append(tuple(pairs[distances.index(closest)]) if distances.count(closest) == 1 else ('0', '0'))
     
     # Find the pairs that go to infinity so we can discount them
     touches_infinity = set()
@@ -54,7 +47,7 @@ ex1 = ['1, 1',
        '8, 9']
 
 assert part_a(ex1) == 17
-print("A: {}".format(part_a(data.split('\n'))))
+#print("A: {}".format(part_a(data.split('\n'))))
 
 assert part_b(ex1, 32) == 16
-print("B: {}".format(part_b(data.split('\n'), 10000)))
+#print("B: {}".format(part_b(data.split('\n'), 10000)))
