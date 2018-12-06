@@ -7,7 +7,7 @@ dl = data.split('\n')
 
 def part_a(data):
     p = re.compile(r'#(\d+) @ (\d+),(\d+): (\d+)x(\d+)')
-    fabric_map = np.matrix(np.zeros((2000, 2000)))
+    fabric_map = np.matrix(np.zeros((1000, 1000)))
     for row in data:
         idn, l, t, w, h = p.match(row).groups()
         idn, l, t, w, h = map(int, [idn, l, t, w, h])
