@@ -1,10 +1,6 @@
 from aocd import data
 import re
-import multiprocessing
-import time
 import string
-
-string.ascii_uppercase
 
 
 def generate_prepreqs(d):
